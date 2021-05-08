@@ -1,12 +1,12 @@
 const router = require('express').Router();
 const helpers = require('./helpers.js');
-const passportService = require('../services/passport');
+// const passportService = require('../services/passport');
 const passport = require('passport');
 const config = process.env;
 const axios = require('axios');
 
 const igdb = require('igdb-api-node').default;
-const client = process.env.IGDB_KEY;
+const client = igdb('1730e05083f0d053b92d91b020b9b1a1');
 
 const requireAuth = passport.authenticate('jwt', { session: false });
 const requireLogin = passport.authenticate('local', { session: false });
@@ -125,16 +125,18 @@ router.get('/games', (req, res) => {
     filters: {
       // 'genres.any': [15, 26, 32]
       'release_dates.date-gt': '2017-01-01',
-      'release_dates.date-lt': '2017-12-31',
+      'release_dates.date-lt': '2017-08-08',
     },
     limit: 28,
     offset: 0,
     order: 'rating:desc',
-}, desiredFields)
-    .then(games => {
-      res.json(games)
+  }, desiredFields)
+  .then(games => {
+    res.json(games)
+    console.log('At the games endpoint');
     })
     .catch(err => {
+      console.log('Got an error retrieving games');
       console.log(err)
       res.status(401).send({ err });
     })

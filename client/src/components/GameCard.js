@@ -8,6 +8,7 @@ import Parallax from './Parallax';
 
 const GameCard = props => {
   let rating;
+  const { total_rating, aggregated_rating } = props.game;
   if (props.game.total_rating) {
     rating = props.game.total_rating;
   } else if (props.game.aggregated_rating) {
@@ -56,7 +57,7 @@ const GameCard = props => {
       <div className="extra content">
         <span className="right floated">
           <StarRatingComponent
-            name="star-rating" 
+            name="star-rating"
             value={starRating}
             starCount={7} /* number of icons in rating, default `5` */
           />

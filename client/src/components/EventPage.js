@@ -6,7 +6,7 @@ import { Link } from 'react-router';
 
 import axios from 'axios';
 // const ROOT_URL = process.env.HOST //|| `http://localhost:3001`;
-const ROOT_URL = 'http://colinear.herokuapp.com';
+const ROOT_URL = 'http://localhost:3001';
 
 const fillerImage = 'http://www.fillmurray.com/300/200';
 
